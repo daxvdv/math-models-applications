@@ -65,8 +65,22 @@ def getTreeRadius(numTrees, initTreeRadius, growthRate, day, growthStartYear, gr
   return treeRadius
 
 
-
 def incrementPlant(totalPlantPop, currentRates, plantPopulations, carryCap, plantIndex):
   additionalPlants = currentRates[plantIndex]*(1-(totalPlantPop/carryCap))*plantPopulations[plantIndex]
 
   return additionalPlants
+
+starterFlowers = [19, 7, 14, 12]
+rainyGrowRates = [-0.01, 0.02, -0.01, 0.02]
+dryGrowRates = [0.02, -0.01, 0.03, -0.01]
+
+myGardenInfo = plantGrowth(1600, starterFlowers, rainyGrowRates, dryGrowRates, 12, 0, 20)
+
+print(myGardenInfo[0])
+
+plt.plot(myGardenInfo[1], myGardenInfo[2], label = "Hostas")
+plt.plot(myGardenInfo[1], myGardenInfo[3], label = "Ferns")
+plt.plot(myGardenInfo[1], myGardenInfo[4], label = "Sedums")
+plt.plot(myGardenInfo[1], myGardenInfo[5], label = "Coneflowers")
+plt.legend()
+plt.show()
